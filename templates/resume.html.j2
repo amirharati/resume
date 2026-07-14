@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ variant.title }}</title>
+    <style>
+      :root {
+        --ink: #1f2937;
+        --muted: #5b6472;
+        --line: #d8dee8;
+        --accent: #0f766e;
+        --accent-soft: #e6f4f2;
+        --paper: #ffffff;
+        --side: #f7faf9;
+      }
+
+      @page {
+        size: Letter;
+        margin: 0.45in;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        color: var(--ink);
+        background: linear-gradient(180deg, #eef7f6 0%, #ffffff 18%);
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .page {
+        max-width: 8.5in;
+        margin: 0 auto;
+        background: var(--paper);
+      }
+
+      .header {
+        padding: 0.2in 0 0.18in;
+        border-bottom: 2px solid var(--accent);
+      }
+
+      .name-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 0.2in;
+      }
+
+      .name {
+        margin: 0;
+        font-size: 28px;
+        line-height: 1;
+        letter-spacing: 0.02em;
+      }
+
+      .headline {
+        margin: 8px 0 0;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .contact {
+        text-align: right;
+        font-size: 11px;
+        line-height: 1.5;
+      }
+
+      .contact a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: 2.2in 1fr;
+        gap: 0.22in;
+        padding-top: 0.18in;
+        align-items: start;
+      }
+
+      .sidebar {
+        display: block;
+      }
+
+      .main {
+        min-width: 0;
+      }
+
+      .section {
+        margin-bottom: 0.14in;
+      }
+
+      .sidebar .section {
+        margin-bottom: 0.09in;
+        background: var(--side);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 0.13in 0.15in;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .section-title {
+        margin: 0 0 0.07in;
+        font-size: 12px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--accent);
+      }
+
+      .summary-box {
+        background: var(--accent-soft);
+        border-radius: 14px;
+        padding: 0.1in 0.12in;
+        font-size: 11.5px;
+        line-height: 1.42;
+      }
+
+      .skill-group {
+        margin-bottom: 0.08in;
+      }
+
+      .skill-label {
+        font-size: 10.5px;
+        font-weight: 700;
+        margin-bottom: 3px;
+      }
+
+      .skill-list {
+        font-size: 9.7px;
+        line-height: 1.36;
+        color: var(--muted);
+        position: relative;
+        padding-left: 12px;
+        margin-bottom: 4px;
+      }
+
+      .skill-list::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: var(--accent);
+      }
+
+      .profile-list {
+        font-size: 9.7px;
+        line-height: 1.38;
+        color: var(--muted);
+      }
+
+      .profile-list div {
+        margin-bottom: 4px;
+        overflow-wrap: anywhere;
+      }
+
+      .profile-list a {
+        color: var(--accent);
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 2px;
+        font-weight: 500;
+      }
+
+      .profile-label {
+        font-weight: 700;
+        color: var(--ink);
+        margin-right: 5px;
+      }
+
+      .skill-past {
+        color: var(--ink);
+      }
+
+      .skill-note {
+        color: var(--muted);
+        font-style: italic;
+      }
+
+      .entry {
+        margin-bottom: 0.12in;
+        padding-bottom: 0.08in;
+        border-bottom: 1px solid #edf2f7;
+      }
+
+      .entry:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+
+      .entry-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.12in;
+        align-items: baseline;
+        margin-bottom: 2px;
+      }
+
+      .entry-role {
+        font-size: 12.5px;
+        font-weight: 700;
+        line-height: 1.15;
+      }
+
+      .entry-title-line {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        flex-wrap: wrap;
+      }
+
+      .entry-company {
+        font-size: 11px;
+        color: var(--muted);
+        margin-top: 1px;
+        line-height: 1.15;
+        font-weight: 500;
+      }
+
+      .entry-summary {
+        font-size: 10.5px;
+        line-height: 1.34;
+        color: var(--ink);
+        margin-top: 4px;
+      }
+
+      .project-links {
+        margin-top: 6px;
+        font-size: 9.4px;
+        line-height: 1.3;
+        color: var(--muted);
+      }
+
+      .project-links a {
+        color: var(--accent);
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 2px;
+        font-weight: 600;
+      }
+
+      .subproject-list {
+        margin-top: 6px;
+        display: grid;
+        gap: 5px;
+      }
+
+      .subproject-item {
+        font-size: 10px;
+        line-height: 1.36;
+        color: var(--ink);
+        padding-left: 12px;
+        position: relative;
+      }
+
+      .subproject-item::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: var(--accent);
+      }
+
+      .subproject-name {
+        font-weight: 700;
+      }
+
+      .subproject-links {
+        margin-top: 2px;
+        font-size: 9px;
+        line-height: 1.25;
+        color: var(--muted);
+      }
+
+      .subproject-links a {
+        color: var(--accent);
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 2px;
+        font-weight: 500;
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 1px 7px;
+        border-radius: 999px;
+        border: 1px solid #b7d9d3;
+        background: #edf8f6;
+        color: var(--accent);
+        font-size: 8px;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        vertical-align: middle;
+      }
+
+      .entry-dates {
+        font-size: 9.5px;
+        color: var(--muted);
+        white-space: nowrap;
+      }
+
+      ul {
+        margin: 0.04in 0 0 0.14in;
+        padding: 0;
+      }
+
+      li {
+        margin-bottom: 3px;
+        font-size: 10.5px;
+        line-height: 1.32;
+      }
+
+      .membership {
+        font-size: 10.5px;
+        line-height: 1.32;
+        margin-bottom: 0.06in;
+      }
+
+      .citation-list {
+        display: grid;
+        gap: 7px;
+      }
+
+      .citation-item {
+        display: grid;
+        grid-template-columns: 22px minmax(0, 1fr);
+        gap: 8px;
+        align-items: start;
+        padding-bottom: 6px;
+        border-bottom: 1px solid #edf2f7;
+      }
+
+      .citation-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+
+      .citation-index {
+        font-size: 9.5px;
+        font-weight: 700;
+        color: var(--accent);
+        line-height: 1.45;
+        text-align: right;
+        padding-top: 1px;
+      }
+
+      .citation-text {
+        min-width: 0;
+        font-size: 10px;
+        line-height: 1.42;
+        color: var(--ink);
+      }
+
+      .edu-item {
+        margin-bottom: 0.1in;
+        padding-bottom: 0.08in;
+        border-bottom: 1px solid #edf2f7;
+      }
+
+      .edu-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+
+      .edu-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 0.12in;
+      }
+
+      .edu-body {
+        padding-left: 8px;
+      }
+
+      .edu-degree {
+        font-weight: 700;
+        font-size: 11.5px;
+        line-height: 1.18;
+        color: var(--ink);
+      }
+
+      .edu-period {
+        font-size: 9.5px;
+        color: var(--muted);
+        white-space: nowrap;
+      }
+
+      .edu-school {
+        color: var(--muted);
+        font-size: 10px;
+        font-weight: 500;
+        line-height: 1.2;
+        margin-top: 1px;
+        margin-bottom: 5px;
+      }
+
+      .edu-details {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 4px;
+        padding-left: 1px;
+      }
+
+      .edu-detail {
+        font-size: 10px;
+        line-height: 1.3;
+        color: var(--ink);
+        display: grid;
+        grid-template-columns: 70px minmax(0, 1fr);
+        gap: 10px;
+        align-items: start;
+      }
+
+      .edu-detail-label {
+        font-weight: 700;
+        color: var(--muted);
+      }
+
+      .edu-detail-value {
+        min-width: 0;
+      }
+
+      .footer-note {
+        margin-top: 0.14in;
+        font-size: 10px;
+        color: var(--muted);
+      }
+
+      @media print {
+        body {
+          background: white;
+        }
+
+        .page {
+          max-width: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <div class="name-row">
+          <div>
+            <h1 class="name">{{ basics.preferred_name }}</h1>
+            <div class="headline">{{ basics.headline }}</div>
+          </div>
+        </div>
+      </header>
+
+      <div class="layout">
+        <aside class="sidebar">
+          <section class="section">
+            <h2 class="section-title">Profile</h2>
+            <div class="profile-list">
+              <div><span class="profile-label">Email:</span><a href="mailto:{{ basics.email }}">{{ basics.email }}</a></div>
+              <div><span class="profile-label">GitHub:</span><a href="{{ basics.github }}">{{ basics.github }}</a></div>
+              <div><span class="profile-label">LinkedIn:</span><a href="{{ basics.linkedin }}">{{ basics.linkedin }}</a></div>
+              <div><span class="profile-label">Website:</span><a href="{{ basics.consulting }}">{{ basics.consulting }}</a></div>
+              <div><span class="profile-label">Status:</span>{{ basics.legal_status }}</div>
+              <div><span class="profile-label">Location:</span>{{ basics.location }}</div>
+            </div>
+          </section>
+
+          <section class="section">
+            <h2 class="section-title">Skills</h2>
+            {% for group_name, lines in selected_skills_sidebar.items() %}
+            <div class="skill-group">
+              <div class="skill-label">{{ group_name }}</div>
+              {% for line in lines %}
+              <div class="skill-list">{{ line | safe }}</div>
+              {% endfor %}
+            </div>
+            {% endfor %}
+          </section>
+
+          {% if selected_tools %}
+          <section class="section">
+            <h2 class="section-title">Frameworks and Tools</h2>
+            {% for group_name, lines in selected_tools_sidebar.items() %}
+            <div class="skill-group">
+              {% if group_name != "Selected Frameworks and Tools" %}
+              <div class="skill-label">{{ group_name }}</div>
+              {% endif %}
+              {% for line in lines %}
+              <div class="skill-list">{{ line | safe }}</div>
+              {% endfor %}
+            </div>
+            {% endfor %}
+          </section>
+          {% endif %}
+
+          <section class="section">
+            <h2 class="section-title">Memberships</h2>
+            {% for item in awards_and_memberships %}
+            <div class="membership">{{ item }}</div>
+            {% endfor %}
+          </section>
+        </aside>
+
+        <main class="main">
+          <section class="section">
+            <h2 class="section-title">Summary</h2>
+            <div class="summary-box">{{ summary }}</div>
+          </section>
+
+          <section class="section">
+            <h2 class="section-title">Education</h2>
+            {% for item in education %}
+            <div class="edu-item">
+              <div class="edu-head">
+                <div class="edu-degree">{{ item.degree }}</div>
+                <div class="edu-period">{{ item.period }}</div>
+              </div>
+              <div class="edu-body">
+                <div class="edu-school">{{ item.school }}</div>
+                <div class="edu-details">
+                  {% for detail in item.detail_rows %}
+                  <div class="edu-detail">
+                    <div class="edu-detail-label">{% if detail.label %}{{ detail.label }}{% endif %}</div>
+                    <div class="edu-detail-value">{{ detail.value }}</div>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </section>
+
+          <section class="section">
+            <h2 class="section-title">Experience</h2>
+            {% for item in experience %}
+            <article class="entry">
+              <div class="entry-head">
+                <div>
+                  <div class="entry-role">{{ item.role }}</div>
+                  <div class="entry-company">{{ item.company }}</div>
+                </div>
+                <div class="entry-dates">{{ item.date_label }}</div>
+              </div>
+              <ul>
+                {% for bullet in item.bullets %}
+                <li>{{ bullet }}</li>
+                {% endfor %}
+              </ul>
+            </article>
+            {% endfor %}
+          </section>
+
+          {% if projects %}
+          <section class="section">
+            <h2 class="section-title">Projects</h2>
+            {% for item in projects %}
+            <article class="entry">
+              <div class="entry-head">
+                <div class="entry-title-line">
+                  <div class="entry-role">{{ item.name }}</div>
+                  {% if item.badges_html %}{{ item.badges_html | safe }}{% endif %}
+                </div>
+                <div class="entry-dates">{{ item.period }}</div>
+              </div>
+              {% if item.project_type %}
+              <div class="entry-company">{{ item.project_type }}</div>
+              {% endif %}
+              <div class="entry-summary">{{ item.summary }}</div>
+              {% if item.highlights %}
+              <ul>
+                {% for bullet in item.highlights %}
+                <li>{{ bullet }}</li>
+                {% endfor %}
+              </ul>
+              {% endif %}
+              {% if item.children %}
+              <div class="entry-summary"><strong>Selected workstreams:</strong></div>
+              <div class="subproject-list">
+                {% for child in item.children %}
+                <div class="subproject-item">
+                  <span class="subproject-name">{{ child.name }}</span>{% if child.badges_html %} {{ child.badges_html | safe }}{% endif %}: {{ child.summary }}
+                  {% if child.project_links_html %}
+                  <div class="subproject-links">{{ child.project_links_html | safe }}</div>
+                  {% endif %}
+                </div>
+                {% endfor %}
+              </div>
+              {% endif %}
+              {% if item.project_links_html %}
+              <div class="project-links">{{ item.project_links_html | safe }}</div>
+              {% endif %}
+            </article>
+            {% endfor %}
+          </section>
+          {% endif %}
+
+          {% if publications %}
+          <section class="section">
+            <h2 class="section-title">Publications</h2>
+            <div class="citation-list">
+              {% for item in publications %}
+              <div class="citation-item">
+                <div class="citation-index">{{ loop.index }}.</div>
+                <div class="citation-text">{{ item.citation }}</div>
+              </div>
+              {% endfor %}
+            </div>
+          </section>
+          {% endif %}
+
+          {% if patents %}
+          <section class="section">
+            <h2 class="section-title">Patents</h2>
+            <div class="citation-list">
+              {% for item in patents %}
+              <div class="citation-item">
+                <div class="citation-index">{{ loop.index }}.</div>
+                <div class="citation-text">{{ item.citation }}</div>
+              </div>
+              {% endfor %}
+            </div>
+          </section>
+          {% endif %}
+
+          <div class="footer-note">References available upon request.</div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

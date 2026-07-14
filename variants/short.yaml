@@ -1,0 +1,36 @@
+name: short
+title: Amir Harati - Short Resume
+summary_key: short
+output_name: amir_harati_short_resume
+experience_ids:
+  - idealabs
+  - susurobo
+  - ellipsis_consultant
+  - ellipsis_engineer
+  - jibo
+  - biosignal
+skill_groups:
+  - Core Languages and Programming
+  - Machine Learning, Speech, and Signal Processing
+  - Platforms, Cloud, and Full-Stack Systems
+tool_groups: []
+project_ids:
+  - idealabs_platform
+  - ellipsis_speech_health
+  - susurobo_genai
+show_projects: true
+publication_ids:
+  - pub_01
+  - pub_03
+  - pub_07
+  - pub_08
+show_publications: true
+show_all_publications: false
+patent_ids:
+  - patent_02
+  - patent_05
+show_patents: true
+show_all_patents: false
+education_ids:
+  - Ph.D. in Computer and Electrical Engineering
+  - M.S. in Electrical Engineering

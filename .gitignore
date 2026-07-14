@@ -1,0 +1,7 @@
+.codex/
+.DS_Store
+output/
+tmp/
+__pycache__/
+scripts/__pycache__/
+node_modules/

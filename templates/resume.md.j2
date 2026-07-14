@@ -1,0 +1,147 @@
+# {{ basics.preferred_name }}
+
+{{ basics.headline }}
+
+- Email: {{ basics.email }}
+- Location: {{ basics.location }}
+- GitHub: {{ basics.github }}
+- LinkedIn: {{ basics.linkedin }}
+- Consulting: {{ basics.consulting }}
+- Legal Status: {{ basics.legal_status }}
+
+## Summary
+
+{{ summary }}
+
+## Skills
+
+{% for group_name, entries in selected_skills.items() -%}
+### {{ group_name }}
+
+{% if entries.type == "sectioned" -%}
+{% for section in entries.sections -%}
+#### {{ section.name }}
+
+{% if section.type == "nested" -%}
+{% for subsection in section.subsections -%}
+##### {{ subsection.name }}
+
+{% for entry in subsection.entries %}{{ entry.markdown }}{% if not loop.last %}, {% endif %}{% endfor %}
+
+{% endfor -%}
+{% else -%}
+{% for entry in section.entries %}{{ entry.markdown }}{% if not loop.last %}, {% endif %}{% endfor %}
+
+{% endif -%}
+{% endfor -%}
+{% else -%}
+{% for entry in entries.entries %}{{ entry.markdown }}{% if not loop.last %}, {% endif %}{% endfor %}
+{% endif %}
+
+{% endfor -%}
+
+{% if selected_tools -%}
+## Frameworks and Tools
+
+{% for group_name, entries in selected_tools.items() -%}
+{% if group_name != "Selected Frameworks and Tools" -%}
+### {{ group_name }}
+
+{% endif -%}
+{% if entries.type == "sectioned" -%}
+{% for section in entries.sections -%}
+### {{ section.name }}
+
+{% if section.type == "nested" -%}
+{% for subsection in section.subsections -%}
+#### {{ subsection.name }}
+
+{% for entry in subsection.entries %}{{ entry.markdown }}{% if not loop.last %}, {% endif %}{% endfor %}
+
+{% endfor -%}
+{% else -%}
+{% for entry in section.entries %}{{ entry.markdown }}{% if not loop.last %}, {% endif %}{% endfor %}
+
+{% endif -%}
+{% endfor -%}
+{% else -%}
+{% for entry in entries.entries %}{{ entry.markdown }}{% if not loop.last %}, {% endif %}{% endfor %}
+{% endif %}
+
+{% endfor -%}
+{% endif -%}
+{% if projects -%}
+## Projects
+
+{% for item in projects -%}
+### {{ item.name }}{% if item.badges_markdown %} {{ item.badges_markdown }}{% endif %}
+{{ item.period }}
+
+{% if item.project_type %}{{ item.project_type }}
+
+{% endif -%}
+{{ item.summary }}
+
+{% for bullet in item.highlights -%}
+- {{ bullet }}
+{% endfor %}
+
+{% if item.children -%}
+- Selected workstreams:
+{% for child in item.children -%}
+- {{ child.name }}{% if child.badges_markdown %} {{ child.badges_markdown }}{% endif %}: {{ child.summary }}{% if child.project_links_markdown %}
+  {{ child.project_links_markdown }}{% endif %}
+{% endfor %}
+{% endif %}
+
+{% if item.project_links_markdown %}{{ item.project_links_markdown }}
+
+{% endif -%}
+
+{% endfor -%}
+{% endif -%}
+## Education
+
+{% for item in education -%}
+### {{ item.degree }}
+{{ item.school }} | {{ item.period }}
+
+{% for detail in item.details -%}
+- {{ detail }}
+{% endfor %}
+
+{% endfor -%}
+## Experience
+
+{% for item in experience -%}
+### {{ item.role }} | {{ item.company }}
+{{ item.date_label }}
+
+{% for bullet in item.bullets -%}
+- {{ bullet }}
+{% endfor %}
+
+{% endfor -%}
+{% if publications -%}
+## Publications
+
+{% for item in publications -%}
+{{ loop.index }}. {{ item.citation }}
+{% endfor %}
+
+{% endif -%}
+{% if patents -%}
+## Patents
+
+{% for item in patents -%}
+{{ loop.index }}. {{ item.citation }}
+{% endfor %}
+
+{% endif -%}
+## Memberships
+
+{% for item in awards_and_memberships -%}
+- {{ item }}
+{% endfor %}
+
+References available upon request.

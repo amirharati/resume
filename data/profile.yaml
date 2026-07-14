@@ -1,0 +1,752 @@
+basics:
+  full_name: Amir Hossein Harati Nejad Torbati
+  preferred_name: Amir Harati
+  email: amir.harati@gmail.com
+  location: Toronto, Canada
+  legal_status: Canadian citizen, US Green Card holder
+  github: https://github.com/amirharati
+  linkedin: https://www.linkedin.com/in/amir-harati-44478045/
+  website: https://idealabs.ai
+  consulting: https://www.idealabs.ai
+  headline: Staff-Level Machine Learning Engineer | Speech, NLP, Generative AI, and Applied Research
+
+summaries:
+  short: >
+    Machine learning engineer and applied researcher with 15+ years of experience across
+    speech, NLP, signal processing, and production AI systems. Built end-to-end products
+    and platforms in healthcare, robotics, and creator tools, combining research depth
+    with production software delivery.
+  complete: >
+    Machine learning engineer, software developer, and applied researcher with deep
+    experience across speech recognition, language modeling, signal processing,
+    statistical modeling, EEG analysis, and generative AI. Career spans academic
+    research, startups, consulting, and founder-led product work, with contributions
+    across production ML systems, clinical AI applications, robotics, and open-source
+    software.
+
+skills:
+  Core Languages and Programming:
+    Programming Languages:
+      - Python
+      - C/C++
+      - TypeScript
+      - JavaScript
+    Systems:
+      - Linux
+    AI Development:
+      - AI-Assisted Software Development
+      - name: gcc/g++
+        status: review_remove
+      - name: Matlab
+        status: review_remove
+  Machine Learning, Speech, and Signal Processing:
+    Current Focus:
+      - Machine Learning and Deep Learning
+      - Statistical Modeling
+      - Language Modeling
+      - Speech Recognition / ASR
+      - Acoustic Modeling
+    Earlier Focus:
+      - name: Nonparametric Bayesian Modeling
+        status: past
+      - name: Signal Processing for EEG
+        status: past
+      - name: EEG Pattern Recognition
+        status: past
+      - name: Human Language Technology
+        status: review_remove
+      - name: NLP
+        status: review_remove
+      - name: NLU
+        status: review_remove
+      - name: Speech Processing
+        status: review_remove
+      - name: Signal Processing
+        status: review_remove
+      - name: Pattern Recognition
+        status: review_remove
+  Platforms, Cloud, and Full-Stack Systems:
+    Deployment and Infrastructure:
+      - Cloud Deployment (including AWS and GCP)
+      - Containers and Docker
+      - MLOps and Experiment Tracking
+    Application and System Delivery:
+      - Full-Stack ML System Development and Deployment
+      - Backend and Server Development
+      - Web Application Deployment
+      - Mobile App Deployment
+    Earlier Systems Work:
+      - name: Lambda
+        status: review_remove
+      - name: gRPC
+        status: review_remove
+      - name: HPC
+        status: review_remove
+      - name: Cloud Computing
+        status: review_remove
+      - name: OpenMP
+        status: review_remove
+      - name: MapReduce
+        status: review_remove
+      - name: Spark
+        status: review_remove
+  Selected Frameworks and Tools:
+    ML and MLOps Tooling:
+      Current Tooling:
+        - PyTorch
+        - Hugging Face / Transformers
+        - pandas
+        - MLflow
+      LLM Workflows:
+        - LLM Evaluation
+        - Fine-Tuning Workflows
+        - "Model Serving (examples: vLLM)"
+        - "Inference Pipelines (examples: RAG, agentic loops)"
+      Earlier Tools:
+        - name: TensorFlow
+          status: past
+        - name: scikit-learn
+          status: past
+    Software Engineering Tooling:
+      Application Development:
+        - "Web and Backend Development (examples: Next.js)"
+        - "Mobile Development (examples: iOS, Flutter)"
+      Systems and Data:
+        - APIs and Service Integration
+        - "SQL and NoSQL Databases (used across different projects)"
+        - Cloud Tooling
+    Speech and Language Tooling:
+      Current Tooling:
+        - ASR Tooling
+      Earlier Tools:
+        - name: NLTK
+          status: past
+        - name: Kaldi
+          status: past
+        - name: HTK
+          status: past
+        - name: ISIP
+          status: past
+  Research and Technical Communication:
+    Research:
+      - Applied Research
+    Communication:
+      - Technical Writing
+      - Patent and Publication Development
+
+projects:
+  - id: idealabs_platform
+    name: ideaLabs AI Consulting and Product R&D
+    period: 2019-present
+    project_type: Consulting, product R&D, and applied ML engineering
+    summary: Umbrella project spanning end-to-end AI consulting, internal product R&D, and reusable software/tooling across ideaLabs.ai and related engineering work.
+    highlights:
+      - Built end-to-end ML systems from prototype through deployment, including model development, evaluation, backend services, and cloud delivery.
+      - Covered a mix of speech, NLP, generative AI, and full-stack ML application work across client-facing and internal efforts.
+      - Served as a practical bridge between research ideas, production constraints, and software delivery.
+    project_links:
+      - label: Products
+        target: https://www.idealabs.ai/products
+        kind: site
+    related_experience_ids:
+      - idealabs
+    related_skill_groups:
+      - Core Languages and Programming
+      - Machine Learning, Speech, and Signal Processing
+      - Platforms, Cloud, and Full-Stack Systems
+      - Research and Technical Communication
+    tags:
+      - consulting
+      - product
+      - ml-systems
+      - generative-ai
+  - id: coding_workflow_agent
+    name: Agentic Coding Workflow System
+    period: 2026-present
+    parent_project_id: idealabs_platform
+    status: work_in_progress
+    project_type: Open-source developer tooling and orchestration
+    summary: Work-in-progress agentic coding system for delegating and managing software-development workflows through MCP and CLI coding agents.
+    highlights:
+      - Builds an MCP server that delegates coding tasks to external CLI agents such as Aider while preserving context, policies, and structured logs.
+      - Focuses on workflow management rather than single-turn generation, including spec-driven review and implementation flows.
+      - Intended as open-source infrastructure for practical agentic software development.
+    project_links:
+      - label: GitHub
+        target: https://github.com/amirharati/mcp_coder
+        kind: repo
+      - label: Local repo
+        target: /Users/amir/projects/personal_tools/mcp_coder
+        kind: local
+    related_experience_ids:
+      - idealabs
+    related_skill_groups:
+      - Core Languages and Programming
+      - Platforms, Cloud, and Full-Stack Systems
+      - Research and Technical Communication
+    tags:
+      - agentic-ai
+      - developer-tools
+      - open-source
+      - orchestration
+  - id: context_optimizer_proxy_project
+    name: Context Optimizer Proxy
+    period: 2026-present
+    parent_project_id: idealabs_platform
+    status: work_in_progress
+    project_type: LLM infrastructure and cost optimization
+    summary: Local proxy and experimentation harness for capturing LLM interactions, reducing token usage, and studying context-compression strategies across providers.
+    highlights:
+      - Sits between OpenAI-compatible clients and providers to preprocess and compress context before requests are sent.
+      - Includes a practical A/B testing harness for measuring savings, routing behavior, and future cache-aware strategies.
+      - Currently usable as a provider proxy and under active development toward deeper context management.
+    project_links:
+      - label: GitHub
+        target: https://github.com/amirharati/context_optimizer_proxy
+        kind: repo
+      - label: Local repo
+        target: /Users/amir/projects/personal_tools/explsore_LLM_proxies/context_optimizer
+        kind: local
+    related_experience_ids:
+      - idealabs
+    related_skill_groups:
+      - Core Languages and Programming
+      - Machine Learning, Speech, and Signal Processing
+      - Platforms, Cloud, and Full-Stack Systems
+    tags:
+      - llm-infra
+      - proxy
+      - context-optimization
+      - open-source
+  - id: homebase
+    name: Homebase
+    period: 2026-present
+    parent_project_id: idealabs_platform
+    status: work_in_progress
+    project_type: AI-powered browser extension and knowledge tooling
+    summary: Chrome extension for managing bookmarks, tabs, and web knowledge, with AI-assisted enrichment to make saved material more useful and searchable.
+    highlights:
+      - Evolved from the `workbench_agent` repo into a product direction centered on browser-native knowledge management.
+      - Enriches bookmarks and related web content rather than treating them as static saved links.
+      - Combines browser-extension UX with AI-assisted categorization, extraction, and search workflows.
+    project_links:
+      - label: GitHub
+        target: https://github.com/amirharati/workbench_agent
+        kind: repo
+      - label: Local repo
+        target: /Users/amir/projects/personal_tools/workbench_agent
+        kind: local
+    related_experience_ids:
+      - idealabs
+    related_skill_groups:
+      - Core Languages and Programming
+      - Platforms, Cloud, and Full-Stack Systems
+    tags:
+      - browser-extension
+      - ai-product
+      - knowledge-management
+      - bookmarks
+  - id: speaking_tutor_project
+    name: Speaking Tutor
+    period: 2026-present
+    parent_project_id: idealabs_platform
+    status: work_in_progress
+    project_type: Speech coaching and pronunciation feedback system
+    summary: Open-source speech coaching project that uses voice cloning, speech analysis, and scoring to help users improve accent and pronunciation through iterative practice.
+    highlights:
+      - Compares user recordings to a reference voice, including cloned-reference workflows and more standard target voices.
+      - Localizes pronunciation issues at phone, word, and sentence levels and feeds them back into a coaching loop.
+      - Explores a mix of hosted and API-based speech systems for evaluation, alignment, and feedback quality.
+    project_links:
+      - label: GitHub
+        target: https://github.com/amirharati/speaking_tutor
+        kind: repo
+      - label: Local repo
+        target: /Users/amir/projects/personal_tools/speaking_tutor
+        kind: local
+    related_experience_ids:
+      - idealabs
+    related_skill_groups:
+      - Machine Learning, Speech, and Signal Processing
+      - Platforms, Cloud, and Full-Stack Systems
+      - Research and Technical Communication
+    tags:
+      - speech
+      - asr
+      - pronunciation
+      - open-source
+  - id: idealogger
+    name: Idealogger
+    period: 2026-present
+    parent_project_id: idealabs_platform
+    status: active
+    project_type: Closed-source product validation web application
+    summary: Closed-source AI web application for helping users evaluate and refine ideas before committing to full execution.
+    highlights:
+      - Uses agentic workflows to structure idea exploration and pre-validation rather than functioning as a simple note-taking tool.
+      - Built as a modern web application with app infrastructure around authentication, database-backed state, and productization concerns.
+      - Combines AI tooling with a product-oriented UX for iterative evaluation and refinement of early-stage ideas.
+    project_links:
+      - label: Site
+        target: https://www.idealogger.app/
+        kind: site
+      - label: Local repo
+        target: /Users/amir/projects/idealogger
+        kind: local
+    related_experience_ids:
+      - idealabs
+    related_skill_groups:
+      - Core Languages and Programming
+      - Platforms, Cloud, and Full-Stack Systems
+    tags:
+      - agentic-ai
+      - webapp
+      - product-validation
+      - closed-source
+  - id: book_agent_project
+    name: Book Agent
+    period: 2026-present
+    parent_project_id: idealabs_platform
+    status: work_in_progress
+    project_type: MCP learning assistant and document workflow
+    summary: Tooling and agent framework for chatting with books and papers, navigating structured Markdown sources, and helping users study, implement, and annotate technical content.
+    highlights:
+      - Converts books into navigable Markdown workspaces and exposes tools for search, reading, indexing, and citation-aware interaction.
+      - Uses an MCP server so users can study inside Cursor or similar clients with a more natural chat workflow.
+      - Supports learning workflows such as chapter discussion, exercise help, algorithm implementation, and notebook creation.
+    project_links:
+      - label: GitHub
+        target: https://github.com/amirharati/book_agent
+        kind: repo
+      - label: Local repo
+        target: /Users/amir/projects/book_agent
+        kind: local
+    related_experience_ids:
+      - idealabs
+    related_skill_groups:
+      - Core Languages and Programming
+      - Machine Learning, Speech, and Signal Processing
+      - Platforms, Cloud, and Full-Stack Systems
+      - Research and Technical Communication
+    tags:
+      - mcp
+      - education
+      - documents
+      - agentic-ai
+  - id: ai_study_buddy
+    name: AI Study Buddy
+    period: 2025
+    parent_project_id: idealabs_platform
+    status: past
+    project_type: Mobile reading and annotation assistant
+    summary: Defunct mobile-first reading assistant aimed at helping users work with offline books and other media through bookmarking, annotation, and knowledge capture.
+    highlights:
+      - Started from a broader media-annotation vision covering books, papers, web content, audio, and video.
+      - Included an initial mobile app implementation focused on capture, annotation, and assisted reading workflows.
+      - Later overlapped conceptually with Book Agent, but remained more oriented toward offline and mobile reading.
+    project_links:
+      - label: Product
+        target: https://www.idealabs.ai/products/ai-study-buddy
+        kind: site
+      - label: Local repo
+        target: /Users/amir/projects/idealabs/reading-assistant-app
+        kind: local
+    related_experience_ids:
+      - idealabs
+    related_skill_groups:
+      - Core Languages and Programming
+      - Platforms, Cloud, and Full-Stack Systems
+    tags:
+      - mobile
+      - reading
+      - annotation
+      - defunct
+  - id: kaldi_asr_projects
+    name: Kaldi and ASR Tooling Projects
+    period: 2017-2019
+    project_type: Speech recognition experiments and tooling
+    summary: Collection of smaller speech-recognition and Kaldi-related projects covering alignment, streaming ASR, i-vector experiments, and adjacent modeling work.
+    highlights:
+      - Includes alignment, streaming-server, and speaker/gender-classification workflows built around Kaldi-related tooling.
+      - Captures practical experimentation around ASR infrastructure rather than one monolithic product.
+      - Useful as supporting evidence of hands-on speech-stack implementation beyond publication-only research.
+    project_links:
+      - label: GitHub list source
+        target: /Users/amir/projects/personal/resume/output/github_projects.md
+        kind: local
+    related_experience_ids:
+      - jibo
+      - temple_ra
+    related_skill_groups:
+      - Machine Learning, Speech, and Signal Processing
+      - Platforms, Cloud, and Full-Stack Systems
+    tags:
+      - kaldi
+      - asr
+      - speech
+      - tooling
+  - id: hdphmm_lib_project
+    name: HDP-HMM / DHDP-HMM C++ Research Library
+    period: 2014-2017
+    project_type: Research software from doctoral work
+    summary: C++ implementation of HDP-HMM and doubly hierarchical Dirichlet process HMM models developed as part of doctoral research in Bayesian acoustic modeling.
+    highlights:
+      - Implements the core modeling work behind the dissertation and related publications on hierarchical Bayesian acoustic models.
+      - Serves as a concrete software artifact connecting theoretical research to reusable code.
+      - Closely related to the broader speech-Bayesian research program but useful as a standalone implementation record.
+    project_links:
+      - label: GitHub
+        target: https://github.com/amirharati/hdphmm_lib
+        kind: repo
+    related_experience_ids:
+      - temple_ra
+      - temple_lead
+    related_skill_groups:
+      - Core Languages and Programming
+      - Machine Learning, Speech, and Signal Processing
+      - Research and Technical Communication
+    tags:
+      - bayesian
+      - speech
+      - cplusplus
+      - phd
+  - id: ellipsis_speech_health
+    name: Speech-Based Behavioral Health Assessment Platform
+    period: 2018-2024
+    status: past
+    project_type: Clinical speech and language ML platform
+    summary: Speech- and language-based behavioral health assessment work spanning model training, evaluation, serving infrastructure, clinical productization, and research output.
+    highlights:
+      - Built training, evaluation, and serving workflows in Python and PyTorch for production-facing behavioral health models.
+      - Trained and fine-tuned a range of model families, from simpler ML approaches to LSTMs, CNNs, transformers, and related speech/language architectures.
+      - Contributed to model evaluation, deployment strategy, and pipeline reliability under clinical product constraints, alongside publications and patent work.
+    project_links:
+      - label: Company
+        target: https://ellipsishealth.com/
+        kind: site
+    related_experience_ids:
+      - ellipsis_engineer
+      - ellipsis_consultant
+    related_skill_groups:
+      - Machine Learning, Speech, and Signal Processing
+      - Platforms, Cloud, and Full-Stack Systems
+      - Research and Technical Communication
+    tags:
+      - healthcare
+      - speech
+      - nlp
+      - clinical-ai
+  - id: susurobo_genai
+    name: Generative AI for Streamer and Creator Engagement
+    period: 2020-present
+    parent_project_id: idealabs_platform
+    status: past
+    project_type: Product and generative AI application development
+    summary: Creator-focused AI product work centered on interactive generative features, product direction, and deployment of user-facing AI experiences.
+    highlights:
+      - Designed and built generative AI features intended to improve engagement and interactivity for streamers and creators.
+      - Worked across product definition, inference workflow design, and backend integration for production-facing features.
+      - Balanced experimentation with practical delivery in a startup environment.
+    related_experience_ids:
+      - susurobo
+    related_skill_groups:
+      - Core Languages and Programming
+      - Machine Learning, Speech, and Signal Processing
+      - Platforms, Cloud, and Full-Stack Systems
+    tags:
+      - generative-ai
+      - startup
+      - product
+  - id: jibo_speech
+    name: Speech Stack for Jibo
+    period: 2015-2018
+    status: past
+    project_type: Embedded software and speech recognition for robotics
+    summary: Real-time robotics speech stack work combining embedded systems programming, on-device speech handling, lightweight on-bot learning, and API-backed cloud processing for more complex tasks.
+    highlights:
+      - Developed low-level C++ runtime components so speech features behaved reliably on constrained robot hardware in real time.
+      - Worked on the robot-side speech handler rather than the full cloud ASR stack, including wake-word or keyword style detection, pronunciation learning, and lighter-weight on-device NLU behaviors.
+      - Integrated local runtime speech behavior with cloud APIs used for more complex recognition and language tasks.
+    related_experience_ids:
+      - jibo
+    related_skill_groups:
+      - Core Languages and Programming
+      - Machine Learning, Speech, and Signal Processing
+      - Platforms, Cloud, and Full-Stack Systems
+    tags:
+      - robotics
+      - embedded
+      - speech
+      - cplusplus
+  - id: tuh_eeg
+    name: TUH EEG Corpus and Clinical EEG Interpretation Research
+    period: 2010-2015
+    status: past
+    project_type: Clinical signal processing and research infrastructure
+    summary: Research program focused on automated clinical EEG interpretation, large-scale EEG data collection and labeling, signal-processing pipelines, and applied machine learning for neurological signal analysis.
+    highlights:
+      - Contributed to the TUH EEG Corpus and related systems for large-scale EEG collection, labeling, and downstream analysis.
+      - Built signal-processing and feature workflows for digesting EEG signals, using a mix of Python and C++.
+      - Developed early deep-learning and event-classification approaches for clinical EEG interpretation and related research workflows.
+    related_experience_ids:
+      - temple_lead
+      - biosignal
+    related_skill_groups:
+      - Machine Learning, Speech, and Signal Processing
+      - Research and Technical Communication
+    tags:
+      - eeg
+      - healthcare
+      - datasets
+      - research
+  - id: speech_bayes
+    name: Bayesian Acoustic Modeling / HDP-HMM Research
+    period: 2010-2016
+    status: past
+    project_type: Doctoral research in speech recognition
+    summary: Long-running doctoral speech research effort centered on acoustic modeling with nonparametric Bayesian methods and the HDP-HMM / DHDP-HMM family of models.
+    highlights:
+      - Developed nonparametric Bayesian approaches for acoustic modeling, which formed the core of the Ph.D. thesis work.
+      - Produced publications and software artifacts around hierarchical Dirichlet process models, acoustic unit discovery, and related Bayesian speech modeling work.
+      - Formed the technical foundation for later work in speech recognition and applied ML systems.
+    project_links:
+      - label: GitHub
+        target: https://github.com/amirharati/hdphmm_lib
+        kind: repo
+    related_experience_ids:
+      - temple_ra
+      - temple_lead
+    related_skill_groups:
+      - Machine Learning, Speech, and Signal Processing
+      - Research and Technical Communication
+    tags:
+      - speech
+      - bayesian
+      - research
+      - phd
+  - id: conversational_nlu_systems
+    name: Conversational AI and NLU Systems
+    period: 2016-present
+    parent_project_id: idealabs_platform
+    status: past
+    project_type: Applied conversational systems across rule-based, classical, and LLM stacks
+    summary: Cross-project work on chat, NLU, and assistant-style systems spanning rule-based patterns, framework-driven pipelines such as Rasa, and more recent LLM- and RAG-based approaches.
+    highlights:
+      - Built or contributed to conversational systems using a mix of regex or pattern-based approaches, NLU pipelines, and later LLM-driven workflows.
+      - Worked across multiple architectural eras rather than a single framework, which helps tie together older NLU work and newer agentic or retrieval-based systems.
+      - Relevant across product, research, and internal tooling efforts where chat or assistant-style interaction was part of the system design.
+    related_experience_ids:
+      - jibo
+      - idealabs
+      - susurobo
+    related_skill_groups:
+      - Machine Learning, Speech, and Signal Processing
+      - Platforms, Cloud, and Full-Stack Systems
+    tags:
+      - nlu
+      - chat
+      - rasa
+      - rag
+
+experience:
+  - id: idealabs
+    company: ideaLabs Inc.
+    role: Machine Learning Engineer and Founder
+    start: 2019-01
+    end: present
+    bullets:
+      - Built end-to-end machine learning systems and AI products for healthcare and enterprise clients across modeling, backend services, evaluation, and cloud deployment.
+      - Developed applied speech, language, and generative AI solutions including fine-tuning, inference pipelines, model serving, and workflow automation.
+      - Led delivery from early prototyping through production deployment for both client engagements and internal product R&D.
+      - Maintained and contributed to private and open-source software spanning APIs, tooling, and full-stack ML applications.
+  - id: ellipsis_consultant
+    company: Ellipsis Health
+    role: Machine Learning Consultant
+    start: 2019-01
+    end: 2024-08
+    bullets:
+      - Designed and productionized speech- and language-based machine learning systems for behavioral health assessment products.
+      - Helped align modeling, evaluation, and deployment workflows with clinical product constraints and operational requirements.
+      - Contributed to technical architecture across model development, pipeline reliability, and deployment strategy.
+      - Contributed to published research and patent development related to speech- and language-based behavioral health assessment.
+      - Supported longer-term iteration on product-facing ML systems spanning model quality, deployment practicality, and cross-functional delivery needs.
+  - id: susurobo
+    company: SusuRobo Inc.
+    role: Lead Machine Learning Engineer and Co-Founder
+    start: 2020-05
+    end: present
+    bullets:
+      - Led development of generative AI systems designed to improve interactivity and engagement for streamers and content creators.
+      - Guided product direction across model behavior, inference workflows, and user-facing AI experiences.
+      - Supported backend integration and deployment workflows for production-facing AI features.
+  - id: ellipsis_engineer
+    company: Ellipsis Health
+    role: Machine Learning and Speech Recognition Engineer
+    start: 2018-05
+    end: 2019-01
+    bullets:
+      - Developed speech and language models for depression detection from acoustic and linguistic signals.
+      - Built production-grade machine learning pipelines supporting clinical application workflows.
+      - Contributed to early research and intellectual property development for speech-based behavioral health technologies.
+  - id: jibo
+    company: Jibo Inc.
+    role: Software Developer and Speech Recognition Engineer
+    start: 2015-07
+    end: 2018-04
+    bullets:
+      - Developed C++ software for embedded and speech-driven robotics systems.
+      - Built production software for runtime behavior, interaction flows, and speech integration on resource-constrained platforms.
+      - Contributed lightweight ML features, including user-specific speech and pronunciation adaptation.
+  - id: biosignal
+    company: BioSignal Analytics
+    role: Scientific Adviser and Co-Founder
+    start: 2015-10
+    end: 2021-12
+    bullets:
+      - Provided scientific and technical guidance for biosignal processing and analytics technologies.
+      - Helped translate prior EEG research into the technical foundation for the company's clinical signal-analysis direction.
+  - id: temple_lead
+    company: Temple University
+    role: Graduate Research Assistant and Lead Researcher
+    start: 2014-01
+    end: 2015-07
+    bullets:
+      - Developed machine learning methods for automatic interpretation of clinical EEG signals collected from Temple University Hospital.
+      - Led research connecting large-scale signal datasets, model development, and applied clinical use cases.
+  - id: temple_ta
+    company: Temple University
+    role: Teaching Assistant
+    start: 2012-09
+    end: 2013-12
+    bullets:
+      - Facilitated instruction for communication systems and embedded systems courses within the Department of Electrical and Computer Engineering.
+  - id: temple_ra
+    company: Temple University
+    role: Graduate Research Assistant
+    start: 2010-01
+    end: 2012-08
+    bullets:
+      - Conducted research in acoustic modeling for speech recognition.
+      - Developed machine learning methods for large-vocabulary speech recognition and spoken term detection.
+  - id: binapardaz
+    company: Bina-Pardaz Company
+    role: Signal Processing Researcher
+    start: 2007-02
+    end: 2009-12
+    bullets:
+      - Conducted research and development in signal processing applications.
+  - id: kntu_ra
+    company: K. N. Toosi University of Technology
+    role: Graduate Research Assistant
+    start: 2007-09
+    end: 2008-01
+    bullets:
+      - Supported graduate research in communication systems and signal processing.
+
+education:
+  - degree: Ph.D. in Computer and Electrical Engineering
+    school: Temple University
+    period: 2010-01 to 2015-07
+    details:
+      - GPA 4.0/4.0
+      - "Dissertation: Nonparametric Bayesian Approaches for Acoustic Modeling"
+      - "Adviser: Dr. Picone"
+  - degree: M.S. in Electrical Engineering
+    school: K. N. Toosi University of Technology
+    period: 2005-09 to 2007-06
+    details:
+      - "Major: Communication System"
+      - GPA 18.17/20
+      - "Thesis: Simulation and DSP Implementation of an LDPC Codec to determine the effective parameters for its performance"
+      - "Adviser: Dr. Ahmadian"
+  - degree: B.S. in Electrical Engineering
+    school: Tabriz University
+    period: 2000-09 to 2004-12
+    details:
+      - "Major: Communication Engineering"
+  - degree: High School Diploma
+    school: Hasheminejad (NODET) High School
+    period: 1997-09 to 2000-05
+    details:
+      - "Emphasis: Mathematics and Physics"
+      - "NODET schools are designed for talented students and use a competitive entrance exam."
+
+patents:
+  - id: patent_01
+    citation: "Harati Nejad Torbati et al. System and Method of Automatic Interpretation of EEG Signals Using a Deep Learning Statistical Model. U.S. Patent Application No. 15/560,658, 2019."
+  - id: patent_02
+    citation: "Harati Nejad Torbati et al. Systems and methods for mental health assessment. U.S. Patent No. 10,748,644. U.S. Patent and Trademark Office, 2020."
+  - id: patent_03
+    citation: "Shriberg, Lu, Harati. Confidence evaluation to measure trust in behavioral health survey results. U.S. Patent Application No. 16/377,090, 2020."
+  - id: patent_04
+    citation: "Harati et al. Acoustic and natural language processing models for speech-based screening and monitoring of behavioral health conditions. U.S. Patent Application No. 17/726,999, 2022."
+  - id: patent_05
+    citation: "Rutowski, Harati Nejad Torbati, Shriberg. Systems and methods for multi-language adaptive mental health risk assessment from spoken and written language. U.S. Patent Application No. 18/263,650, 2024."
+
+publications:
+  - id: pub_01
+    citation: "Lin, D., Nazreen, T., Rutowski, T., Lu, Y., Harati, A., Shriberg, E., et al. Feasibility of a machine learning-based smartphone application in detecting depression and anxiety in a generally senior population. Frontiers in Psychology, 13, 2022."
+  - id: pub_02
+    citation: "Golmohammadi, M., Harati Nejad Torbati, A., Lopez de Diego, S., Obeid, I., Picone, J. Automatic Analysis of EEGs Using Big Data and Hybrid Deep Learning Architectures. Frontiers in Human Neuroscience, 13(76), 2017."
+  - id: pub_03
+    citation: "Harati, A., Picone, J. A Doubly Hierarchical Dirichlet Process Hidden Markov Model with a Non-Ergodic Structure. IEEE/ACM Transactions on Audio, Speech, and Language Processing, 24(1), 174-184, 2016."
+  - id: pub_04
+    citation: "Sahu, A., Saleheen, F., Oleksyuk, V., McGoverin, C., Pleshko, N., Harati, A., Picone, J., Won, C.-H. Characterization of Mammary Tumors Using Noninvasive Tactile and Hyperspectral Imaging. IEEE Sensors Journal, 14(10), 3337-3344, 2014."
+  - id: pub_05
+    citation: "Harati, A., Picone, J. Predicting Search Term Reliability for Spoken Term Detection Systems. International Journal of Speech Technology, 17(1), 1-9, 2014."
+  - id: pub_06
+    citation: "Parker, D., Picone, J., Harati, A., Lu, S., Jenkyns, M., Polgreen, P. Detecting paroxysmal coughing from pertussis cases using voice recognition technology. PLoS ONE, 8(12), e82971, 2013."
+  - id: pub_07
+    citation: "Rozanski, R., Shriberg, E., Lu, Y., Harati, A., Rutowski, T., Chlebek, P., Goulart, T., Oliveira, R. Probabilistic Performance Bounds for Evaluating Depression Models Given Noisy Self-Report Labels. IEEE BIBM, Istanbul, 2023."
+  - id: pub_08
+    citation: "Harati, A., Shriberg, E., Rutowski, T., Chlebek, P., Lu, Y., Oliveira, R. Speech-Based Depression Prediction Using Encoder-Weight-Only Transfer Learning and a Large Corpus. ICASSP, Toronto, 2021."
+  - id: pub_09
+    citation: "Rutowski, T., Shriberg, E., Harati, A., Lu, Y., Oliveira, R., Chlebek, P. Cross-Demographic Portability of Deep NLP-Based Depression Models. IEEE SLT, Shenzhen, 2021."
+  - id: pub_10
+    citation: "Lu, Y., Harati, A., Rutowski, T., Oliveira, R., Chlebek, P., Shriberg, E. Robust Speech and Natural Language Processing Models for Depression Screening. IEEE SPMB, Philadelphia, 2020."
+  - id: pub_11
+    citation: "Rutowski, T., Shriberg, E., Harati, A., Lu, Y., Chlebek, P., Oliveira, R. Depression and Anxiety Prediction Using Deep Language Models and Transfer Learning. BESC, Bournemouth, 2020."
+  - id: pub_12
+    citation: "Chlebek, P., Shriberg, E., Lu, Y., Rutowski, T., Harati, A., Oliveira, R. Comparing speech recognition services for HCI applications in behavioral health. UbiComp, 2020."
+  - id: pub_13
+    citation: "Rutowski, T., Harati, A., Lu, Y., Shriberg, E. Optimizing Speech-Input Length for Speaker-Independent Depression Classification. Interspeech, Graz, 2019."
+  - id: pub_14
+    citation: "Harati, A., Picone, J. A Nonparametric Bayesian Approach for Spoken Term Detection by Example Query. Interspeech, San Francisco, 2016."
+  - id: pub_15
+    citation: "Harati, A., Picone, J. A Nonparametric Bayesian Approach for Automatic Discovery of a Lexicon and Acoustic Units. SLT Workshop, San Diego, 2016."
+  - id: pub_16
+    citation: "Harati, A., et al. Improved EEG Event Classification Using Differential Energy. IEEE Signal Processing in Medicine and Biology Symposium, Philadelphia, 2015."
+  - id: pub_17
+    citation: "Harati, A., et al. The TUH EEG Corpus: A Big Data Resource for Automated EEG Interpretation. IEEE Signal Processing in Medicine and Biology Symposium, Philadelphia, 2014."
+  - id: pub_18
+    citation: "Harati, A., Picone, J., Sobel, M. A Left-to-Right HDP-HMM with HDPM Emissions. Conference on Information Sciences and Systems, Princeton, 2014."
+  - id: pub_19
+    citation: "Steinberg, J., Harati, A., Picone, J. A Comparative Analysis of Bayesian Nonparametric Inference Algorithms for Acoustic Modeling in Speech Recognition. International Joint Conferences on Computer, Information, Systems Sciences, and Engineering, Bridgeport, Springer-Verlag, 2013."
+  - id: pub_20
+    citation: "Harati, A., Choi, S. I., Tabrizi, M., Obeid, I., Jacobson, M., Picone, J. The Temple University Hospital EEG Corpus. IEEE Global Conference on Signal and Information Processing, Austin, 2013."
+  - id: pub_21
+    citation: "Harati, A., Picone, J. Speech Acoustic Unit Segmentation Using Hierarchical Dirichlet Processes. Interspeech, Lyon, 2013."
+  - id: pub_22
+    citation: "Harati, A., Picone, J. Assessing Search Term Strength in Spoken Term Detection. IEEE International Multi-Disciplinary Conference on Cognitive Methods in Situation Awareness and Decision Support, San Diego, 2013."
+  - id: pub_23
+    citation: "Harati, A., Picone, J., Sobel, M. Applications of Dirichlet Process Mixtures to Speaker Adaptation. ICASSP, Kyoto, 2012."
+  - id: pub_24
+    citation: "Harati, A., Ahmadian, M., Mosavinia, A. A New Criterion To Compare Different LDPC Codes For Hardware Implementation. IEEE CCECE, Niagara Falls, 2008."
+  - id: pub_25
+    citation: "Harati, A., Golmohammadi, M., Jacobson, M., Lopez, S., Obeid, I., Picone, J., Tobochnik, S. Automatic Interpretation of EEGs for Clinical Decision Support. American Clinical Neurophysiology Society Annual Meeting, Orlando, 2016."
+  - id: pub_26
+    citation: "Obeid, I., Harati, A., Picone, J. EEG Event Detection Using Big Data. Asilomar Conference on Signals, Systems, and Computers, Pacific Grove, 2014."
+  - id: pub_27
+    citation: "Adamczyk, M., Parker, D., Cremer, J., Picone, J., Harati, A., Polgreen, P. A mobile phone application for pertussis classification based on machine learning. International Meeting on Emerging Diseases and Surveillance, Vienna, 2013."
+  - id: pub_28
+    citation: "Harati, A., Rutowski, T., Lu, Y., Chlebek, P., Oliveira, R., Shriberg, E., Lin, D. Generalization of Deep Acoustic and NLP Models for Large-Scale Depression Screening. Biomedical Sensing and Analysis: Signal Processing in Medicine and Biology, Springer, 2022."
+  - id: pub_29
+    citation: "Harati, A. Nonparametric Bayesian Approaches for Acoustic Modeling. Ph.D. Dissertation, Temple University, Philadelphia, 2015."
+  - id: pub_30
+    citation: "Harati, A. Simulation and DSP Implementation of an LDPC Codec to determine the effective parameters for its performance. Master Thesis, K. N. Toosi University of Technology, Tehran, 2007."
+  - id: pub_31
+    citation: "Harati, A. Study and Simulation of Digital Radio Mondiale (DRM) Systems. B.S.C. Final Project, Tabriz University, Tabriz, 2004."
+
+awards_and_memberships:
+  - Senior Member, IEEE (2016-present)
+  - Eta Kappa Nu (HKN) (2011-present)
