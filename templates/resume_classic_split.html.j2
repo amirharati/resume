@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ variant.title }}</title>
+    <style>
+      :root {
+        --ink: #1d2433;
+        --muted: #667187;
+        --line: #d7dde8;
+        --accent: #243b6b;
+        --paper: #ffffff;
+      }
+
+      @page {
+        size: Letter;
+        margin: 0.52in 0.52in 0.68in;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        color: var(--ink);
+        background: var(--paper);
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .page {
+        max-width: 8.5in;
+        margin: 0 auto;
+        padding-bottom: 0.08in;
+      }
+
+      .header {
+        padding-bottom: 0.12in;
+        border-bottom: 3px double var(--accent);
+        margin-bottom: 0.16in;
+      }
+
+      .header-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 0.16in;
+      }
+
+      .name {
+        margin: 0;
+        font-size: 27px;
+        line-height: 1;
+        font-weight: 800;
+      }
+
+      .headline {
+        margin-top: 7px;
+        font-size: 11px;
+        color: var(--muted);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        font-weight: 700;
+      }
+
+      .header-meta {
+        text-align: right;
+        font-size: 9px;
+        line-height: 1.2;
+        color: var(--muted);
+        white-space: nowrap;
+        padding-top: 2px;
+      }
+
+      .contact {
+        margin-top: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 14px;
+        font-size: 9.7px;
+        color: var(--muted);
+      }
+
+      .contact a {
+        color: var(--accent);
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 2px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 2.15in 1fr;
+        gap: 0.22in;
+      }
+
+      .section {
+        margin-bottom: 0.14in;
+      }
+
+      .section-title {
+        margin: 0 0 0.08in;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--accent);
+        font-weight: 800;
+      }
+
+      .sidebar-card {
+        border: 1px solid var(--line);
+        padding: 0.11in 0.12in;
+        margin-bottom: 0.1in;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .sidebar-label {
+        font-size: 10px;
+        font-weight: 700;
+        margin-bottom: 4px;
+      }
+
+      .sidebar-text {
+        font-size: 9.4px;
+        line-height: 1.35;
+        color: var(--muted);
+      }
+
+      .sidebar-text div {
+        margin-bottom: 4px;
+      }
+
+      .sidebar-text a {
+        color: var(--accent);
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 2px;
+      }
+
+      .summary {
+        font-size: 10.7px;
+        line-height: 1.45;
+        padding: 0.11in 0.12in;
+        border: 1px solid var(--line);
+      }
+
+      .entry {
+        margin-bottom: 0.12in;
+        padding-bottom: 0.08in;
+        border-bottom: 1px solid #edf1f6;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .entry:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+
+      .entry-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.12in;
+        align-items: baseline;
+      }
+
+      .entry-title-line {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        flex-wrap: wrap;
+      }
+
+      .entry-role {
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .entry-company {
+        margin-top: 2px;
+        font-size: 10px;
+        color: var(--muted);
+      }
+
+      .entry-dates {
+        font-size: 9.3px;
+        color: var(--muted);
+        white-space: nowrap;
+      }
+
+      .entry-summary {
+        margin-top: 5px;
+        font-size: 10px;
+        line-height: 1.4;
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 1px 6px;
+        border: 1px solid #cad3e6;
+        background: #f5f7fc;
+        border-radius: 999px;
+        color: var(--accent);
+        font-size: 7.7px;
+        font-weight: 800;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+      }
+
+      .project-links,
+      .subproject-links {
+        margin-top: 5px;
+        font-size: 9px;
+        line-height: 1.28;
+        color: var(--muted);
+      }
+
+      .project-links a,
+      .subproject-links a {
+        color: var(--accent);
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 2px;
+      }
+
+      ul {
+        margin: 0.05in 0 0 0.15in;
+        padding: 0;
+      }
+
+      li {
+        margin-bottom: 3px;
+        font-size: 9.9px;
+        line-height: 1.33;
+      }
+
+      .subproject-list {
+        margin-top: 7px;
+        display: grid;
+        gap: 6px;
+      }
+
+      .subproject-item {
+        font-size: 9.8px;
+        line-height: 1.34;
+        padding-left: 11px;
+        position: relative;
+      }
+
+      .subproject-item::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: var(--accent);
+      }
+
+      .subproject-name {
+        font-weight: 700;
+      }
+
+      .citation-list {
+        display: grid;
+        gap: 7px;
+      }
+
+      .citation-item {
+        display: grid;
+        grid-template-columns: 22px minmax(0, 1fr);
+        gap: 8px;
+      }
+
+      .citation-index {
+        font-size: 9px;
+        color: var(--accent);
+        font-weight: 700;
+        text-align: right;
+      }
+
+      .citation-text,
+      .membership {
+        font-size: 9.7px;
+        line-height: 1.33;
+      }
+
+      .footer-note {
+        margin-top: 0.12in;
+        font-size: 9.4px;
+        color: var(--muted);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <div class="header-row">
+          <div>
+            <h1 class="name">{{ basics.preferred_name }}</h1>
+            <div class="headline">{{ basics.headline }}</div>
+          </div>
+          <div class="header-meta">Updated {{ generated_date }}</div>
+        </div>
+        <div class="contact">
+          <div><strong>Email:</strong> <a href="mailto:{{ basics.email }}">{{ basics.email }}</a></div>
+          <div><strong>GitHub:</strong> <a href="{{ basics.github }}">{{ basics.github }}</a></div>
+          <div><strong>LinkedIn:</strong> <a href="{{ basics.linkedin }}">{{ basics.linkedin }}</a></div>
+          <div><strong>Website:</strong> <a href="{{ basics.consulting }}">{{ basics.consulting }}</a></div>
+          <div><strong>Location:</strong> {{ basics.location }}</div>
+        </div>
+      </header>
+
+      <div class="grid">
+        <aside>
+          <section class="section">
+            <h2 class="section-title">Summary</h2>
+            <div class="summary">{{ summary }}</div>
+          </section>
+
+          <section class="section">
+            <h2 class="section-title">Skills</h2>
+            {% for group_name, lines in selected_skills_sidebar.items() %}
+            <div class="sidebar-card">
+              <div class="sidebar-label">{{ group_name }}</div>
+              <div class="sidebar-text">
+                {% for line in lines %}
+                <div>{{ line | safe }}</div>
+                {% endfor %}
+              </div>
+            </div>
+            {% endfor %}
+          </section>
+
+          {% if selected_tools %}
+          <section class="section">
+            <h2 class="section-title">Frameworks and Tools</h2>
+            {% for group_name, lines in selected_tools_sidebar.items() %}
+            <div class="sidebar-card">
+              {% if group_name != "Selected Frameworks and Tools" %}
+              <div class="sidebar-label">{{ group_name }}</div>
+              {% endif %}
+              <div class="sidebar-text">
+                {% for line in lines %}
+                <div>{{ line | safe }}</div>
+                {% endfor %}
+              </div>
+            </div>
+            {% endfor %}
+          </section>
+          {% endif %}
+
+          <section class="section">
+            <h2 class="section-title">Profile</h2>
+            <div class="sidebar-card">
+              <div class="sidebar-text">
+                <div><strong>Status:</strong> {{ basics.legal_status }}</div>
+                <div><strong>Memberships:</strong> {{ awards_and_memberships | join("; ") }}</div>
+              </div>
+            </div>
+          </section>
+        </aside>
+
+        <main>
+          <section class="section">
+            <h2 class="section-title">Education</h2>
+            {% for item in education %}
+            <article class="entry">
+              <div class="entry-head">
+                <div>
+                  <div class="entry-role">{{ item.degree }}</div>
+                  <div class="entry-company">{{ item.school }}</div>
+                </div>
+                <div class="entry-dates">{{ item.period }}</div>
+              </div>
+              {% if item.detail_rows %}
+              <ul>
+                {% for detail in item.detail_rows %}
+                <li>{% if detail.label %}<strong>{{ detail.label }}:</strong> {% endif %}{{ detail.value }}</li>
+                {% endfor %}
+              </ul>
+              {% endif %}
+            </article>
+            {% endfor %}
+          </section>
+
+          <section class="section">
+            <h2 class="section-title">Experience</h2>
+            {% for item in experience %}
+            <article class="entry">
+              <div class="entry-head">
+                <div>
+                  <div class="entry-role">{{ item.role }}</div>
+                  <div class="entry-company">{{ item.company }}</div>
+                </div>
+                <div class="entry-dates">{{ item.date_label }}</div>
+              </div>
+              <ul>
+                {% for bullet in item.bullets %}
+                <li>{{ bullet }}</li>
+                {% endfor %}
+              </ul>
+            </article>
+            {% endfor %}
+          </section>
+
+          {% if projects %}
+          <section class="section">
+            <h2 class="section-title">Projects</h2>
+            {% for item in projects %}
+            <article class="entry">
+              <div class="entry-head">
+                <div class="entry-title-line">
+                  <div class="entry-role">{{ item.name }}</div>
+                  {% if item.badges_html %}{{ item.badges_html | safe }}{% endif %}
+                </div>
+                <div class="entry-dates">{{ item.period }}</div>
+              </div>
+              {% if item.project_type %}
+              <div class="entry-company">{{ item.project_type }}</div>
+              {% endif %}
+              <div class="entry-summary">{{ item.summary }}</div>
+              {% if item.highlights %}
+              <ul>
+                {% for bullet in item.highlights %}
+                <li>{{ bullet }}</li>
+                {% endfor %}
+              </ul>
+              {% endif %}
+              {% if item.children %}
+              <div class="entry-summary"><strong>Selected workstreams:</strong></div>
+              <div class="subproject-list">
+                {% for child in item.children %}
+                <div class="subproject-item">
+                  <span class="subproject-name">{{ child.name }}</span>{% if child.badges_html %} {{ child.badges_html | safe }}{% endif %}: {{ child.summary }}
+                  {% if child.project_links_html %}
+                  <div class="subproject-links">{{ child.project_links_html | safe }}</div>
+                  {% endif %}
+                </div>
+                {% endfor %}
+              </div>
+              {% endif %}
+              {% if item.project_links_html %}
+              <div class="project-links">{{ item.project_links_html | safe }}</div>
+              {% endif %}
+            </article>
+            {% endfor %}
+          </section>
+          {% endif %}
+
+          {% if publications %}
+          <section class="section">
+            <h2 class="section-title">Publications</h2>
+            <div class="citation-list">
+              {% for item in publications %}
+              <div class="citation-item">
+                <div class="citation-index">{{ loop.index }}.</div>
+                <div class="citation-text">{{ item.citation }}</div>
+              </div>
+              {% endfor %}
+            </div>
+          </section>
+          {% endif %}
+
+          <div class="footer-note">Professional references available upon request.</div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

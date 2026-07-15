@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ variant.title }}</title>
+    <style>
+      :root {
+        --ink: #172033;
+        --muted: #4f5d75;
+        --line: #d8deea;
+        --accent: #0f5c73;
+        --paper: #ffffff;
+        --soft: #f5f8fb;
+      }
+
+      @page {
+        size: Letter;
+        margin: 0.55in 0.55in 0.68in;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        background: var(--paper);
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .page {
+        max-width: 8.5in;
+        margin: 0 auto;
+        padding-bottom: 0.08in;
+      }
+
+      .header {
+        border-bottom: 2px solid var(--accent);
+        padding-bottom: 0.12in;
+        margin-bottom: 0.18in;
+      }
+
+      .header-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 0.16in;
+      }
+
+      .name {
+        margin: 0;
+        font-size: 28px;
+        line-height: 1;
+        letter-spacing: 0.01em;
+      }
+
+      .headline {
+        margin-top: 8px;
+        font-size: 11.5px;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-weight: 700;
+      }
+
+      .header-meta {
+        text-align: right;
+        font-size: 9px;
+        line-height: 1.2;
+        color: var(--muted);
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        white-space: nowrap;
+        padding-top: 2px;
+      }
+
+      .contact-row {
+        margin-top: 10px;
+        font-size: 10px;
+        line-height: 1.6;
+        color: var(--muted);
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
+
+      .contact-row div {
+        margin-bottom: 3px;
+      }
+
+      .contact-row div:last-child {
+        margin-bottom: 0;
+      }
+
+      .contact-row a {
+        color: var(--accent);
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 2px;
+      }
+
+      .section {
+        margin-bottom: 0.16in;
+      }
+
+      .section-title {
+        margin: 0 0 0.08in;
+        font-size: 11px;
+        line-height: 1.1;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--accent);
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-weight: 800;
+      }
+
+      .summary-box {
+        background: var(--soft);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 0.11in 0.13in;
+        font-size: 11px;
+        line-height: 1.45;
+      }
+
+      .matrix {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.14in 0.18in;
+      }
+
+      .mini-block {
+        min-width: 0;
+      }
+
+      .mini-label {
+        font-size: 10px;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-weight: 700;
+        color: var(--ink);
+        margin-bottom: 3px;
+      }
+
+      .mini-text {
+        font-size: 10px;
+        line-height: 1.34;
+        color: var(--muted);
+      }
+
+      .group-block {
+        margin-bottom: 8px;
+      }
+
+      .group-block:last-child {
+        margin-bottom: 0;
+      }
+
+      .group-title {
+        display: block;
+        margin-bottom: 4px;
+        padding-left: 11px;
+        position: relative;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 9.3px;
+        font-weight: 700;
+        line-height: 1.2;
+        color: var(--ink);
+      }
+
+      .group-title::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: var(--accent);
+      }
+
+      .profile-box {
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 0.1in 0.12in;
+        background: var(--soft);
+      }
+
+      .profile-row {
+        font-size: 10px;
+        line-height: 1.34;
+        color: var(--muted);
+        margin-bottom: 4px;
+      }
+
+      .line-list {
+        margin-top: 2px;
+        display: grid;
+        gap: 3px;
+        margin-left: 10px;
+      }
+
+      .line-item {
+        padding-left: 11px;
+        position: relative;
+      }
+
+      .line-item::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: var(--accent);
+      }
+
+      .profile-row:last-child {
+        margin-bottom: 0;
+      }
+
+      .entry {
+        margin-bottom: 0.13in;
+        padding-bottom: 0.08in;
+        border-bottom: 1px solid #edf1f6;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .entry:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+
+      .entry-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.14in;
+        align-items: baseline;
+      }
+
+      .entry-title-line {
+        display: flex;
+        gap: 6px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .entry-role {
+        font-size: 12px;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-weight: 700;
+      }
+
+      .entry-company,
+      .entry-type {
+        margin-top: 2px;
+        font-size: 10px;
+        line-height: 1.35;
+        color: var(--muted);
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
+
+      .entry-dates {
+        font-size: 9.5px;
+        color: var(--muted);
+        white-space: nowrap;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
+
+      .entry-summary {
+        margin-top: 5px;
+        font-size: 10.5px;
+        line-height: 1.42;
+      }
+
+      .project-links,
+      .subproject-links {
+        margin-top: 5px;
+        font-size: 9.2px;
+        line-height: 1.3;
+        color: var(--muted);
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
+
+      .project-links a,
+      .subproject-links a {
+        color: var(--accent);
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 2px;
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 1px 7px;
+        border: 1px solid #bdd6e2;
+        border-radius: 999px;
+        background: #eef6fb;
+        color: var(--accent);
+        font-size: 7.8px;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      ul {
+        margin: 0.05in 0 0 0.15in;
+        padding: 0;
+      }
+
+      li {
+        margin-bottom: 3px;
+        font-size: 10px;
+        line-height: 1.34;
+      }
+
+      .subproject-list {
+        margin-top: 7px;
+        display: grid;
+        gap: 6px;
+        margin-left: 12px;
+      }
+
+      .subproject-item {
+        font-size: 10px;
+        line-height: 1.36;
+        padding-left: 12px;
+        position: relative;
+      }
+
+      .subproject-item::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: var(--accent);
+      }
+
+      .subproject-name {
+        font-weight: 700;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
+
+      .citation-list {
+        display: grid;
+        gap: 7px;
+      }
+
+      .citation-item {
+        position: relative;
+        padding-left: 12px;
+        font-weight: 700;
+      }
+
+      .citation-item::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: var(--accent);
+      }
+
+      .citation-text,
+      .membership {
+        font-size: 9.8px;
+        line-height: 1.34;
+      }
+
+      .footer-note {
+        margin-top: 0.12in;
+        font-size: 9.5px;
+        color: var(--muted);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <div class="header-row">
+          <div>
+            <h1 class="name">{{ basics.preferred_name }}</h1>
+            <div class="headline">{{ basics.headline }}</div>
+          </div>
+          <div class="header-meta">Updated {{ generated_date }}</div>
+        </div>
+        <div class="contact-row">
+          <div><strong>Email:</strong> <a href="mailto:{{ basics.email }}">{{ basics.email }}</a></div>
+          <div><strong>GitHub:</strong> <a href="{{ basics.github }}">{{ basics.github }}</a></div>
+          <div><strong>LinkedIn:</strong> <a href="{{ basics.linkedin }}">{{ basics.linkedin }}</a></div>
+          <div><strong>Website:</strong> <a href="{{ basics.consulting }}">{{ basics.consulting }}</a></div>
+        </div>
+      </header>
+
+      <section class="section">
+        <h2 class="section-title">Summary</h2>
+        <div class="summary-box">{{ summary }}</div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">Profile</h2>
+        <div class="profile-box">
+          <div class="profile-row"><strong>Status:</strong> {{ basics.legal_status }}</div>
+          <div class="profile-row"><strong>Memberships:</strong><br>{{ awards_and_memberships | join("; ") }}</div>
+          <div class="profile-row"><strong>Location:</strong> {{ basics.location }}</div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">Skills and Tools</h2>
+        <div class="matrix">
+          <div class="mini-block">
+            <div class="mini-label">Skills</div>
+            <div class="mini-text">
+              {% for group_name, lines in selected_skills_sidebar.items() %}
+              <div class="group-block">
+                <span class="group-title">{{ group_name }}</span>
+                <div class="line-list">
+                  {% for line in lines %}
+                  <div class="line-item">{{ line | safe }}</div>
+                  {% endfor %}
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="mini-block">
+            <div class="mini-label">Frameworks and Tools</div>
+            <div class="mini-text">
+              {% for group_name, lines in selected_tools_sidebar.items() %}
+              <div class="group-block">
+                {% if group_name != "Selected Frameworks and Tools" %}<span class="group-title">{{ group_name }}</span>{% endif %}
+                <div class="line-list">
+                  {% for line in lines %}
+                  <div class="line-item">{{ line | safe }}</div>
+                  {% endfor %}
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">Education</h2>
+        {% for item in education %}
+        <article class="entry">
+          <div class="entry-head">
+            <div>
+              <div class="entry-role">{{ item.degree }}</div>
+              <div class="entry-company">{{ item.school }}</div>
+            </div>
+            <div class="entry-dates">{{ item.period }}</div>
+          </div>
+          {% if item.detail_rows %}
+          <ul>
+            {% for detail in item.detail_rows %}
+            <li>{% if detail.label %}<strong>{{ detail.label }}:</strong> {% endif %}{{ detail.value }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </article>
+        {% endfor %}
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">Experience</h2>
+        {% for item in experience %}
+        <article class="entry">
+          <div class="entry-head">
+            <div>
+              <div class="entry-role">{{ item.role }}</div>
+              <div class="entry-company">{{ item.company }}</div>
+            </div>
+            <div class="entry-dates">{{ item.date_label }}</div>
+          </div>
+          <ul>
+            {% for bullet in item.bullets %}
+            <li>{{ bullet }}</li>
+            {% endfor %}
+          </ul>
+        </article>
+        {% endfor %}
+      </section>
+
+      {% if projects %}
+      <section class="section">
+        <h2 class="section-title">Projects</h2>
+        {% for item in projects %}
+        <article class="entry">
+          <div class="entry-head">
+            <div class="entry-title-line">
+              <div class="entry-role">{{ item.name }}</div>
+              {% if item.badges_html %}{{ item.badges_html | safe }}{% endif %}
+            </div>
+            <div class="entry-dates">{{ item.period }}</div>
+          </div>
+          {% if item.project_type %}
+          <div class="entry-type">{{ item.project_type }}</div>
+          {% endif %}
+          <div class="entry-summary">{{ item.summary }}</div>
+          {% if item.highlights %}
+          <ul>
+            {% for bullet in item.highlights %}
+            <li>{{ bullet }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+          {% if item.children %}
+          <div class="entry-summary"><strong>Selected workstreams:</strong></div>
+          <div class="subproject-list">
+            {% for child in item.children %}
+            <div class="subproject-item">
+              <span class="subproject-name">{{ child.name }}</span>{% if child.badges_html %} {{ child.badges_html | safe }}{% endif %}: {{ child.summary }}
+              {% if child.project_links_html %}
+              <div class="subproject-links">{{ child.project_links_html | safe }}</div>
+              {% endif %}
+            </div>
+            {% endfor %}
+          </div>
+          {% endif %}
+          {% if item.project_links_html %}
+          <div class="project-links">{{ item.project_links_html | safe }}</div>
+          {% endif %}
+        </article>
+        {% endfor %}
+      </section>
+      {% endif %}
+
+      {% if publications %}
+      <section class="section">
+        <h2 class="section-title">Publications</h2>
+        <div class="citation-list">
+          {% for item in publications %}
+          <div class="citation-item"><div class="citation-text">{{ item.citation }}</div></div>
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}
+
+      {% if patents %}
+      <section class="section">
+        <h2 class="section-title">Patents</h2>
+        <div class="citation-list">
+          {% for item in patents %}
+          <div class="citation-item"><div class="citation-text">{{ item.citation }}</div></div>
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}
+
+      <div class="footer-note">Professional references available upon request.</div>
+    </div>
+  </body>
+</html>

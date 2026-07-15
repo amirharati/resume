@@ -1,0 +1,49 @@
+name: complete_single_column
+title: Amir Harati - Complete Resume (Single Column)
+summary_key: complete
+output_name: amir_harati_complete_resume_single_column
+html_template: resume_single_column.html.j2
+markdown_template: resume.md.j2
+experience_ids:
+  - idealabs
+  - ellipsis_consultant
+  - susurobo
+  - ellipsis_engineer
+  - jibo
+  - biosignal
+  - temple_lead
+  - temple_ta
+  - temple_ra
+  - binapardaz
+  - kntu_ra
+skill_groups:
+  - Core Languages and Programming
+  - Machine Learning, Speech, and Signal Processing
+  - Platforms, Cloud, and Full-Stack Systems
+  - Research and Technical Communication
+tool_groups:
+  - Selected Frameworks and Tools
+project_ids:
+  - idealabs_platform
+  - coding_workflow_agent
+  - context_optimizer_proxy_project
+  - homebase
+  - speaking_tutor_project
+  - idealogger
+  - book_agent_project
+  - ai_study_buddy
+  - conversational_nlu_systems
+  - ellipsis_speech_health
+  - susurobo_genai
+  - jibo_speech
+  - tuh_eeg
+  - speech_bayes
+show_projects: true
+show_publications: true
+show_all_publications: true
+show_patents: true
+show_all_patents: true
+education_ids:
+  - Ph.D. in Computer and Electrical Engineering
+  - M.S. in Electrical Engineering
+  - B.S. in Electrical Engineering
