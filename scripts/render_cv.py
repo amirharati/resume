@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+from datetime import datetime
 import html
 import pathlib
 import subprocess
@@ -39,27 +40,45 @@ def load_yaml(path: pathlib.Path) -> dict[str, Any]:
 
 
 def format_date_label(start: str, end: str) -> str:
-    def humanize(value: str) -> str:
-        if value == "present":
-            return "Present"
-        year, month = value.split("-")
-        names = {
-            "01": "Jan",
-            "02": "Feb",
-            "03": "Mar",
-            "04": "Apr",
-            "05": "May",
-            "06": "Jun",
-            "07": "Jul",
-            "08": "Aug",
-            "09": "Sep",
-            "10": "Oct",
-            "11": "Nov",
-            "12": "Dec",
-        }
-        return f"{names[month]} {year}"
+    return f"{humanize_month_period(start)} - {humanize_month_period(end)}"
 
-    return f"{humanize(start)} - {humanize(end)}"
+
+def humanize_month_period(value: str) -> str:
+    if value == "present":
+        return "Present"
+    year, month = value.split("-")
+    names = {
+        "01": "Jan",
+        "02": "Feb",
+        "03": "Mar",
+        "04": "Apr",
+        "05": "May",
+        "06": "Jun",
+        "07": "Jul",
+        "08": "Aug",
+        "09": "Sep",
+        "10": "Oct",
+        "11": "Nov",
+        "12": "Dec",
+    }
+    return f"{names[month]} {year}"
+
+
+def humanize_year_period(value: str) -> str:
+    if value == "present":
+        return "Present"
+    return value
+
+
+def format_period_text(value: str) -> str:
+    value = str(value)
+    if " to " in value:
+        start, end = value.split(" to ", 1)
+        return f"{humanize_month_period(start)} - {humanize_month_period(end)}"
+    if "-" in value and value.count("-") == 1:
+        start, end = value.split("-", 1)
+        return f"{humanize_year_period(start)} - {humanize_year_period(end)}"
+    return value
 
 
 def pick_by_ids(items: list[dict[str, Any]], ids: list[str]) -> list[dict[str, Any]]:
@@ -79,6 +98,7 @@ def pick_education(profile: dict[str, Any], variant: dict[str, Any]) -> list[dic
 
 def enrich_education_item(item: dict[str, Any]) -> dict[str, Any]:
     enriched = dict(item)
+    enriched["period"] = format_period_text(item["period"])
     details = []
     for detail in item.get("details", []):
         if ":" in detail:
@@ -247,6 +267,40 @@ def condense_sidebar_lines(group_name: str, lines: list[str]) -> list[str]:
 
 
 def build_sidebar_group(group_name: str, group: dict[str, Any]) -> list[str]:
+    if group_name == "Selected Frameworks and Tools" and group["type"] == "sectioned":
+        grouped_lines: list[str] = []
+        for section in group["sections"]:
+            current_entries: list[str] = []
+            past_entries: list[str] = []
+
+            if section["type"] == "flat":
+                for entry in section["entries"]:
+                    is_past = " (past" in entry["markdown"]
+                    if is_past:
+                        past_entries.append(strip_past_markers(entry["html"]))
+                    else:
+                        current_entries.append(strip_past_markers(entry["html"]))
+            else:
+                for subsection in section["subsections"]:
+                    for entry in subsection["entries"]:
+                        is_past = " (past" in entry["markdown"]
+                        if is_past:
+                            past_entries.append(strip_past_markers(entry["html"]))
+                        else:
+                            current_entries.append(strip_past_markers(entry["html"]))
+
+            if current_entries:
+                grouped_lines.append(
+                    f"<strong>{html.escape(section['name'])}</strong><br>{', '.join(current_entries)}"
+                )
+            if past_entries:
+                grouped_lines.append(
+                    f"<strong>{html.escape(section['name'])} (Earlier)</strong><br>{', '.join(past_entries)}"
+                )
+
+        if grouped_lines:
+            return grouped_lines
+
     current_lines = collect_sidebar_lines(group, include_past=False)
     past_lines = collect_sidebar_lines(group, include_past=True)
 
@@ -307,12 +361,14 @@ def build_context(profile: dict[str, Any], variant: dict[str, Any]) -> dict[str,
         "projects": projects,
         "publications": publications,
         "patents": patents,
+        "generated_date": datetime.now().strftime("%B %d, %Y").replace(" 0", " "),
         "variant": variant,
     }
 
 
 def enrich_project_item(item: dict[str, Any]) -> dict[str, Any]:
     enriched = dict(item)
+    enriched["period"] = format_period_text(item["period"])
     summary = item.get("summary") or item.get("description", "")
     highlights = item.get("highlights", [])
     enriched["summary"] = summary
@@ -569,7 +625,15 @@ def render_pdf_with_reportlab(pdf_path: pathlib.Path, context: dict[str, Any]) -
         for project in context["projects"]:
             story.append(Paragraph(html.escape(project["name"]), styles["SubsectionTitle"]))
             story.append(Paragraph(html.escape(project["period"]), styles["ResumeMeta"]))
-            story.append(Paragraph(html.escape(project["description"]), styles["ResumeBody"]))
+            if project.get("project_type"):
+                story.append(Paragraph(html.escape(project["project_type"]), styles["ResumeMeta"]))
+            story.append(Paragraph(html.escape(project["summary"]), styles["ResumeBody"]))
+            for bullet in project.get("highlights", []):
+                story.append(Paragraph(f"• {html.escape(bullet)}", styles["ResumeBody"]))
+            for child in project.get("children", []):
+                child_line = f"{child['name']}: {child['summary']}"
+                story.append(Paragraph(f"• {html.escape(child_line)}", styles["ResumeBody"]))
+            story.append(Spacer(1, 4))
 
     story.append(Paragraph("Experience", styles["SectionTitle"]))
     for item in context["experience"]:
@@ -678,8 +742,10 @@ def main() -> int:
     profile = load_yaml(DATA_PATH)
     variant = load_yaml(variant_path)
     context = build_context(profile, variant)
-    html = render_template("resume.html.j2", context, autoescape=True)
-    markdown = render_template("resume.md.j2", context, autoescape=False)
+    html_template = variant.get("html_template", "resume.html.j2")
+    markdown_template = variant.get("markdown_template", "resume.md.j2")
+    html = render_template(html_template, context, autoescape=True)
+    markdown = render_template(markdown_template, context, autoescape=False)
     html_path, markdown_path, pdf_path = write_outputs(args.variant, variant["output_name"], html, markdown)
 
     if not args.markdown_only:

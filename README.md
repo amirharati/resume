@@ -55,6 +55,22 @@ and writes:
 - `output/markdown/complete.md`
 - `output/pdf/amir_harati_complete_resume.pdf`
 
+Render alternate complete-resume templates:
+
+```bash
+python3 scripts/render_cv.py complete_single_column
+python3 scripts/render_cv.py complete_classic
+python3 scripts/render_cv.py complete_hybrid
+python3 scripts/render_cv.py complete_ats
+```
+
+These produce:
+
+- `output/pdf/amir_harati_complete_resume_single_column.pdf`
+- `output/pdf/amir_harati_complete_resume_classic.pdf`
+- `output/pdf/amir_harati_complete_resume_hybrid.pdf`
+- `output/pdf/amir_harati_complete_resume_ats.pdf`
+
 Render the short resume:
 
 ```bash

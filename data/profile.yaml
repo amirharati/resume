@@ -29,12 +29,13 @@ skills:
     Programming Languages:
       - Python
       - C/C++
-      - TypeScript
-      - JavaScript
-    Systems:
-      - Linux
     AI Development:
       - AI-Assisted Software Development
+    Earlier Languages and Tooling:
+      - name: TypeScript
+        status: past
+      - name: JavaScript
+        status: past
       - name: gcc/g++
         status: review_remove
       - name: Matlab
@@ -67,6 +68,7 @@ skills:
         status: review_remove
   Platforms, Cloud, and Full-Stack Systems:
     Deployment and Infrastructure:
+      - Linux
       - Cloud Deployment (including AWS and GCP)
       - Containers and Docker
       - MLOps and Experiment Tracking
@@ -144,10 +146,6 @@ projects:
       - Built end-to-end ML systems from prototype through deployment, including model development, evaluation, backend services, and cloud delivery.
       - Covered a mix of speech, NLP, generative AI, and full-stack ML application work across client-facing and internal efforts.
       - Served as a practical bridge between research ideas, production constraints, and software delivery.
-    project_links:
-      - label: Products
-        target: https://www.idealabs.ai/products
-        kind: site
     related_experience_ids:
       - idealabs
     related_skill_groups:
@@ -480,7 +478,7 @@ projects:
       - cplusplus
   - id: tuh_eeg
     name: TUH EEG Corpus and Clinical EEG Interpretation Research
-    period: 2010-2015
+    period: 2014-2015
     status: past
     project_type: Clinical signal processing and research infrastructure
     summary: Research program focused on automated clinical EEG interpretation, large-scale EEG data collection and labeling, signal-processing pipelines, and applied machine learning for neurological signal analysis.
@@ -501,7 +499,7 @@ projects:
       - research
   - id: speech_bayes
     name: Bayesian Acoustic Modeling / HDP-HMM Research
-    period: 2010-2016
+    period: 2010-2015
     status: past
     project_type: Doctoral research in speech recognition
     summary: Long-running doctoral speech research effort centered on acoustic modeling with nonparametric Bayesian methods and the HDP-HMM / DHDP-HMM family of models.
